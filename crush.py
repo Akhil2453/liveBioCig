@@ -159,7 +159,7 @@ Button(PageOne, text='7', font=dfont, command=lambda:num_get(7)).grid(row=4, col
 Button(PageOne, text='8', font=dfont, command=lambda:num_get(8)).grid(row=4, column=1)
 Button(PageOne, text='9', font=dfont, command=lambda:num_get(9)).grid(row=4, column=2)
 Button(PageOne, text='0', font=dfont, command=lambda:num_get(0)).grid(row=5, column=0)
-Button(PageOne, text='Enter', font=dfont, command=number_e).grid(columnspan=2, row=, column=1)
+Button(PageOne, text='Enter', font=dfont, command=number_e).grid(columnspan=2, row=5, column=1)
 
 Label(PageTwo, text=" ", font=dfont).grid(row=0, column=1, padx=5, pady=5)
 Label(PageTwo, text="Thank You", font=dfont).grid(row=1, column=1, padx=150, pady=50)
