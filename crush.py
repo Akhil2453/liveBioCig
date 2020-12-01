@@ -4,7 +4,7 @@ import time
 from tkinter import *
 import tkinter.font as tkFont
 import requests
-import os
+
 def raise_frame(frame):
     frame.tkraise()
 
@@ -14,13 +14,16 @@ dfont = None
 welcome = None
 msg = None
 value = None
-number = None
+number = ""
+
+#GPIO pins
 aux_vcc = 16
 s2 = 5
 s3 = 6
 signal = 26
 NUM_CYCLES = 10
 visible = None
+
 #Fulscreen or windowed
 fullscreen = False
 
@@ -39,15 +42,15 @@ def number_e():
     num = number.get()
     number.set(num)
     print(num)
-    #return num
     para = {'action': 'saveUserData', 'MOB': num, 'MCID': '002000244', 'BTNO': '10'}
     r = requests.post("http://clickcash.in/apisave/apiDataSavever2.php", data=para)
     print(r.text)
-    raise_frame(PageTwo)
-    #time.sleep(15)
     visible = True
     num=" "
     number.set(num)
+    raise_frame(PageTwo)
+    root.after(10000, PageTwo.lower)
+    raise_frame(welcome)
 
 #toggle fullscreen
 def toggle_fullscreen(event=None):
@@ -73,7 +76,7 @@ def resize(event=None):
     dfont.configure(size=new_size)
 
 def setup():
-    #GPIO.cleanup()
+    GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BCM)
     GPIO.setup(signal, GPIO.IN, pull_up_down=GPIO.PUD_UP)
     GPIO.setup(aux_vcc, GPIO.OUT)
@@ -112,19 +115,12 @@ def loop():
         print("Place the Cigarette")
         msge="Place the\nCigarette"
         msg.set(msge)
-    if visible == True:
-        visible = False
-        Thank = Tk()
-        thank = Frame(Thank)
-        Label(thank, text="ThankYou", font=dfont).pack
-        count10()
-        raise_frame(welcome)
     root.after(500, loop)
 
 #create the window
 root = Tk()
 root.title("Cigarette Bud Crusher: BioCrux")
-root.geometry('480x320')
+root.geometry('800x480')
 
 welcome = Frame(root)
 PageOne = Frame(root)
@@ -135,24 +131,21 @@ for frame in (welcome, PageOne, PageTwo):
 
 value = DoubleVar()
 msg = StringVar()
-number = IntVar()
+number = StringVar()
 
-dfont = tkFont.Font(size=-24)
+dfont = tkFont.Font(size=-12)
 
-space=Label(welcome, text="                ", font=dfont)
-space.grid(row=0, column=1, padx=40, pady=40)
-space.grid(row=1, column=0, padx=15, pady=15)
-space.grid(row=2, column=0, padx=15, pady=15)
-space.grid(row=3, column=0, padx=15, pady=15)
-Label(welcome, text="Welcome.\n Please extinguish and drop your Cigarette bud here", font=dfont).grid(row=3, column=1, padx=10, pady=10)
+#space=Label(welcome, text="                ", font=dfont)
+#space.grid(row=0, column=0, padx=40, pady=40)
+Label(welcome, text="Welcome.\n Please extinguish and drop your Cigarette bud here", font=dfont).grid(row=0, column=0, padx=50, pady=75)
 
-Label(PageOne, text=" ", font=dfont).grid(row=0, column=1, padx=5, pady=5)
-Label(PageOne, text="Enter your Mobile Number to get reward: ", font=dfont).grid(row=1, column=1, padx=5, pady=5)
-Entry(PageOne, textvariable=number, width=30, font=dfont).grid(row=2, column=1, padx=5, pady=5)
-Button(PageOne, text='Enter', font=dfont, command=number_e).grid(row=3, column=1, padx=5, pady=5)
+#Label(PageOne, text=" ", font=dfont).grid(row=0, column=1, padx=5, pady=5)
+Label(PageOne, text="Enter your Mobile Number to get reward: ", font=dfont).grid(row=1, column=1, padx=25, pady=15)
+Entry(PageOne, textvariable=number, width=30, font=dfont).grid(row=2, column=1, padx=25, pady=13)
+Button(PageOne, text='Enter', font=dfont, command=number_e).grid(row=3, column=1, padx=50, pady=25)
 
 Label(PageTwo, text=" ", font=dfont).grid(row=0, column=1, padx=5, pady=5)
-Label(PageTwo, text="Thank You", font=dfont).grid(row=1, column=1, padx=50, pady=50)
+Label(PageTwo, text="Thank You", font=dfont).grid(row=1, column=1, padx=150, pady=50)
 Button(PageTwo, text="welcomeScreen", command=lambda:raise_frame(welcome)).grid(row=2, column=1, padx=35, pady=35)
 
 #for frame in (welcome, PageOne, PageTwo):
@@ -169,5 +162,5 @@ setup()
 
 root.after(1000, loop)
 raise_frame(welcome)
-toggle_fullscreen()
+#toggle_fullscreen()
 root.mainloop()
