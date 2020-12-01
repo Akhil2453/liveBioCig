@@ -52,6 +52,12 @@ def number_e():
     root.after(10000, PageTwo.lower)
     raise_frame(welcome)
 
+def num_get(num):
+    current = e.get()
+    e.delete(0, END)
+    e.insert(0, str(current) + str(num))
+
+
 #toggle fullscreen
 def toggle_fullscreen(event=None):
     global root
@@ -140,9 +146,20 @@ dfont = tkFont.Font(size=-12)
 Label(welcome, text="Welcome.\n Please extinguish and drop your Cigarette bud here", font=dfont).grid(row=0, column=0, padx=50, pady=75)
 
 #Label(PageOne, text=" ", font=dfont).grid(row=0, column=1, padx=5, pady=5)
-Label(PageOne, text="Enter your Mobile Number to get reward: ", font=dfont).grid(row=1, column=1, padx=25, pady=15)
-Entry(PageOne, textvariable=number, width=30, font=dfont).grid(row=2, column=1, padx=25, pady=13)
-Button(PageOne, text='Enter', font=dfont, command=number_e).grid(row=3, column=1, padx=50, pady=25)
+Label(PageOne, text="Enter your Mobile Number to get reward: ", font=dfont).grid(columnspan=3, row=0, column=0)
+e = Entry(PageOne, textvariable=number, width=30, font=dfont)
+e.grid(columnspan=3, row=1, column=0)
+Button(PageOne, text='1', font=dfont, command=lambda:num_get(1)).grid(row=2, column=0)
+Button(PageOne, text='2', font=dfont, command=lambda:num_get(2)).grid(row=2, column=1)
+Button(PageOne, text='3', font=dfont, command=lambda:num_get(3)).grid(row=2, column=2)
+Button(PageOne, text='4', font=dfont, command=lambda:num_get(4)).grid(row=3, column=0)
+Button(PageOne, text='5', font=dfont, command=lambda:num_get(5)).grid(row=3, column=1)
+Button(PageOne, text='6', font=dfont, command=lambda:num_get(6)).grid(row=3, column=2)
+Button(PageOne, text='7', font=dfont, command=lambda:num_get(7)).grid(row=4, column=0)
+Button(PageOne, text='8', font=dfont, command=lambda:num_get(8)).grid(row=4, column=1)
+Button(PageOne, text='9', font=dfont, command=lambda:num_get(9)).grid(row=4, column=2)
+Button(PageOne, text='0', font=dfont, command=lambda:num_get(0)).grid(row=5, column=0)
+Button(PageOne, text='Enter', font=dfont, command=number_e).grid(columnspan=2, row=, column=1)
 
 Label(PageTwo, text=" ", font=dfont).grid(row=0, column=1, padx=5, pady=5)
 Label(PageTwo, text="Thank You", font=dfont).grid(row=1, column=1, padx=150, pady=50)
