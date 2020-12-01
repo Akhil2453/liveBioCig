@@ -57,6 +57,14 @@ def num_get(num):
     e.delete(0, END)
     e.insert(0, str(current) + str(num))
 
+def delt():
+    e.delete(len(e.get)-1, END)
+
+def clr():
+    e.delete(0, END)
+
+def cancel():
+    raise_frame(welcome)
 
 #toggle fullscreen
 def toggle_fullscreen(event=None):
@@ -143,23 +151,26 @@ dfont = tkFont.Font(size=-12)
 
 #space=Label(welcome, text="                ", font=dfont)
 #space.grid(row=0, column=0, padx=40, pady=40)
-Label(welcome, text="Welcome.\n Please extinguish and drop your Cigarette bud here", font=dfont).grid(row=0, column=0, padx=50, pady=75)
+Label(welcome, text="Welcome.\nPlease extinguish and drop your Cigarette bud here", font=dfont).grid(row=0, column=0, padx=40, pady=75)
 
 #Label(PageOne, text=" ", font=dfont).grid(row=0, column=1, padx=5, pady=5)
 Label(PageOne, text="Enter your Mobile Number to get reward: ", font=dfont).grid(columnspan=3, row=0, column=0)
 e = Entry(PageOne, textvariable=number, width=30, font=dfont)
 e.grid(columnspan=3, row=1, column=0)
-Button(PageOne, text='1', font=dfont, command=lambda:num_get(1)).grid(row=2, column=0)
-Button(PageOne, text='2', font=dfont, command=lambda:num_get(2)).grid(row=2, column=1)
-Button(PageOne, text='3', font=dfont, command=lambda:num_get(3)).grid(row=2, column=2)
-Button(PageOne, text='4', font=dfont, command=lambda:num_get(4)).grid(row=3, column=0)
-Button(PageOne, text='5', font=dfont, command=lambda:num_get(5)).grid(row=3, column=1)
-Button(PageOne, text='6', font=dfont, command=lambda:num_get(6)).grid(row=3, column=2)
-Button(PageOne, text='7', font=dfont, command=lambda:num_get(7)).grid(row=4, column=0)
-Button(PageOne, text='8', font=dfont, command=lambda:num_get(8)).grid(row=4, column=1)
-Button(PageOne, text='9', font=dfont, command=lambda:num_get(9)).grid(row=4, column=2)
-Button(PageOne, text='0', font=dfont, command=lambda:num_get(0)).grid(row=5, column=0)
-Button(PageOne, text='Enter', font=dfont, command=number_e).grid(columnspan=2, row=5, column=1)
+Button(PageOne, text='1', font=dfont, command=lambda:num_get(1), height=1, width=7).grid(row=2, column=0)
+Button(PageOne, text='2', font=dfont, command=lambda:num_get(2), height=1, width=7).grid(row=2, column=1)
+Button(PageOne, text='3', font=dfont, command=lambda:num_get(3), height=1, width=7).grid(row=2, column=2)
+Button(PageOne, text='4', font=dfont, command=lambda:num_get(4), height=1, width=7).grid(row=3, column=0)
+Button(PageOne, text='5', font=dfont, command=lambda:num_get(5), height=1, width=7).grid(row=3, column=1)
+Button(PageOne, text='6', font=dfont, command=lambda:num_get(6), height=1, width=7).grid(row=3, column=2)
+Button(PageOne, text='7', font=dfont, command=lambda:num_get(7), height=1, width=7).grid(row=4, column=0)
+Button(PageOne, text='8', font=dfont, command=lambda:num_get(8), height=1, width=7).grid(row=4, column=1)
+Button(PageOne, text='9', font=dfont, command=lambda:num_get(9), height=1, width=7).grid(row=4, column=2)
+Button(PageOne, text='0', font=dfont, command=lambda:num_get(0), height=1, width=7).grid(row=5, column=1)
+Button(PageOne, text='Delete', font=dfont, command=delt, height=1, width=7).grid(row=5, column=2)
+Button(PageOne, text='Clear', font=dfont,command=clr, height=1, width=7).grid(row=5, column=0)
+Button(PageOne, text='Enter', font=dfont, command=number_e, hright=2, width=7).grid(rowspan=2, row=4, column=3)
+Button(PageOne, text='Cancel', font=dfont, command=cancel, height=2, width=7).grid(rowspan=2, row=2, column=3)
 
 Label(PageTwo, text=" ", font=dfont).grid(row=0, column=1, padx=5, pady=5)
 Label(PageTwo, text="Thank You", font=dfont).grid(row=1, column=1, padx=150, pady=50)
