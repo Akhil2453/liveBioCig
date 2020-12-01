@@ -46,7 +46,7 @@ def number_e():
     r = requests.post("http://clickcash.in/apisave/apiDataSavever2.php", data=para)
     print(r.text)
     visible = True
-    num=" "
+    num=""
     number.set(num)
     raise_frame(PageTwo)
     root.after(10000, PageTwo.lower)
@@ -58,7 +58,9 @@ def num_get(num):
     e.insert(0, str(current) + str(num))
 
 def delt():
-    e.delete(len(e.get)-1, END)
+    temp = e.get()[:-1]
+    e.delete(0, END)
+    e.insert(0, temp)
 
 def clr():
     e.delete(0, END)
@@ -141,7 +143,7 @@ PageOne = Frame(root)
 PageTwo = Frame(root)
 
 for frame in (welcome, PageOne, PageTwo):
-    frame.grid(row=5, column=3, sticky='news')
+    frame.grid(row=5, column=4, sticky='news')
 
 value = DoubleVar()
 msg = StringVar()
@@ -169,7 +171,7 @@ Button(PageOne, text='9', font=dfont, command=lambda:num_get(9), height=1, width
 Button(PageOne, text='0', font=dfont, command=lambda:num_get(0), height=1, width=7).grid(row=5, column=1)
 Button(PageOne, text='Delete', font=dfont, command=delt, height=1, width=7).grid(row=5, column=2)
 Button(PageOne, text='Clear', font=dfont,command=clr, height=1, width=7).grid(row=5, column=0)
-Button(PageOne, text='Enter', font=dfont, command=number_e, hright=2, width=7).grid(rowspan=2, row=4, column=3)
+Button(PageOne, text='Enter', font=dfont, command=number_e, height=2, width=7).grid(rowspan=2, row=4, column=3)
 Button(PageOne, text='Cancel', font=dfont, command=cancel, height=2, width=7).grid(rowspan=2, row=2, column=3)
 
 Label(PageTwo, text=" ", font=dfont).grid(row=0, column=1, padx=5, pady=5)
