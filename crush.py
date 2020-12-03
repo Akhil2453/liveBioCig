@@ -4,6 +4,7 @@ import time
 from tkinter import *
 import tkinter.font as tkFont
 import requests
+from PIL import Image, ImageTk
 
 def raise_frame(frame):
     frame.tkraise()
@@ -136,7 +137,7 @@ def loop():
 #create the window
 root = Tk()
 root.title("Cigarette Bud Crusher: BioCrux")
-root.geometry('800x480')
+root.geometry('480x320')
 
 welcome = Frame(root)
 PageOne = Frame(root)
@@ -153,9 +154,13 @@ dfont = tkFont.Font(size=-12)
 
 #space=Label(welcome, text="                ", font=dfont)
 #space.grid(row=0, column=0, padx=40, pady=40)
-Label(welcome, text="Welcome.\nPlease extinguish and drop your Cigarette bud here", font=dfont).grid(row=0, column=0, padx=40, pady=75)
+Label(welcome, text="Welcome.\nPlease extinguish and drop your Cigarette bud here", font=dfont).grid(row=1, column=0, padx=40, pady=25)
 
 #Label(PageOne, text=" ", font=dfont).grid(row=0, column=1, padx=5, pady=5)
+canvas = Canvas(welcome, width=800, height=300)
+canvas.grid(row=0, column=0, padx=25, pady=5)
+img = ImageTk.PhotoImage(Image.open("banner.png"))
+canvas.create_image(20, 20, anchor=NW, image=img)
 Label(PageOne, text="Enter your Mobile Number to get reward: ", font=dfont).grid(columnspan=3, row=0, column=0)
 e = Entry(PageOne, textvariable=number, width=30, font=dfont)
 e.grid(columnspan=3, row=1, column=0)
@@ -170,10 +175,10 @@ Button(PageOne, text='8', font=dfont, command=lambda:num_get(8), height=1, width
 Button(PageOne, text='9', font=dfont, command=lambda:num_get(9), height=1, width=7).grid(row=4, column=2)
 Button(PageOne, text='0', font=dfont, command=lambda:num_get(0), height=1, width=7).grid(row=5, column=1)
 Button(PageOne, text='Delete', font=dfont, command=delt, height=1, width=7).grid(row=5, column=2)
+image = PhotoImage(file='/home/pi/Desktop/liveBioCig/banner.png')
 Button(PageOne, text='Clear', font=dfont,command=clr, height=1, width=7).grid(row=5, column=0)
 Button(PageOne, text='Enter', font=dfont, command=number_e, height=2, width=7).grid(rowspan=2, row=4, column=3)
 Button(PageOne, text='Cancel', font=dfont, command=cancel, height=2, width=7).grid(rowspan=2, row=2, column=3)
-
 Label(PageTwo, text=" ", font=dfont).grid(row=0, column=1, padx=5, pady=5)
 Label(PageTwo, text="Thank You", font=dfont).grid(row=1, column=1, padx=150, pady=50)
 Button(PageTwo, text="welcomeScreen", command=lambda:raise_frame(welcome)).grid(row=2, column=1, padx=35, pady=35)
