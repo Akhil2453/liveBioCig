@@ -158,9 +158,9 @@ Label(welcome, text="Welcome.\nPlease extinguish and drop your Cigarette bud her
 
 #Label(PageOne, text=" ", font=dfont).grid(row=0, column=1, padx=5, pady=5)
 canvas = Canvas(welcome, width=800, height=300)
-canvas.grid(row=0, column=0, padx=25, pady=5)
+canvas.grid(row=0, column=0)
 img = ImageTk.PhotoImage(Image.open("banner.png"))
-canvas.create_image(20, 20, anchor=NW, image=img)
+canvas.create_image(3, 3, anchor=NW, image=img)
 Label(PageOne, text="Enter your Mobile Number to get reward: ", font=dfont).grid(columnspan=3, row=0, column=0)
 e = Entry(PageOne, textvariable=number, width=30, font=dfont)
 e.grid(columnspan=3, row=1, column=0)
