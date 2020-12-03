@@ -144,7 +144,7 @@ PageOne = Frame(root)
 PageTwo = Frame(root)
 
 for frame in (welcome, PageOne, PageTwo):
-    frame.grid(row=5, column=4, sticky='news')
+    frame.grid(row=6, column=4, sticky='news')
 
 value = DoubleVar()
 msg = StringVar()
@@ -199,5 +199,5 @@ setup()
 
 root.after(1000, loop)
 raise_frame(welcome)
-#toggle_fullscreen()
+toggle_fullscreen()
 root.mainloop()
