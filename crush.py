@@ -192,5 +192,5 @@ setup()
 
 root.after(1000, loop)
 raise_frame(welcome)
-#toggle_fullscreen()
+toggle_fullscreen()
 root.mainloop()
