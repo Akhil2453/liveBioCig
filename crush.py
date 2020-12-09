@@ -113,25 +113,44 @@ def loop():
     global number
     global num
     global visible
-    GPIO.output(s2, GPIO.HIGH)
-    GPIO.output(s3, GPIO.LOW)
+    GPIO.output(s2,GPIO.LOW)
+    GPIO.output(s3,GPIO.LOW)
+    time.sleep(0.3)
+    start = time.time()
+    for impulse_count in range(NUM_CYCLES):
+        GPIO.wait_for_edge(signal, GPIO.FALLING)
+    duration = time.time() - start      #seconds to run for loop
+    red  = NUM_CYCLES / duration   #in Hz
+    print("red value - ",red)
+    GPIO.output(s2,GPIO.LOW)
+    GPIO.output(s3,GPIO.HIGH)
     time.sleep(0.3)
     start = time.time()
     for impulse_count in range(NUM_CYCLES):
         GPIO.wait_for_edge(signal, GPIO.FALLING)
     duration = time.time() - start
-    val = NUM_CYCLES / duration
-    value.set(val)
-    print("value: ", val)
-    if val > 5600:
+    blue = NUM_CYCLES / duration
+    print("blue value - ",blue)
+    GPIO.output(s2,GPIO.HIGH)
+    GPIO.output(s3,GPIO.HIGH)
+    time.sleep(0.3)
+    start = time.time()
+    for impulse_count in range(NUM_CYCLES):
+        GPIO.wait_for_edge(signal, GPIO.FALLING)
+    duration = time.time() - start
+    green = NUM_CYCLES / duration
+    print("green value - ",green)
+    time.sleep(1)
+    if ((red >= 4800 and red <= 5400) and (blue >= 4400 and blue <= 5000) and (green >= 4700 and green <= 5500)):
+        print("Place the Cigarette")
+        msge="Place the\nCigarette"
+        msg.set(msge)
+    else:
         print("Cigarette Bud Detected")
         msge="Cigarette bud\nDetectedd"
         msg.set(msge)
         raise_frame(PageOne)
-    else:
-        print("Place the Cigarette")
-        msge="Place the\nCigarette"
-        msg.set(msge)
+        
     root.after(500, loop)
 
 #create the window
