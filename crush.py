@@ -141,25 +141,26 @@ def loop():
     green = NUM_CYCLES / duration
     print("green value - ",green)
     time.sleep(1)
-    if ((red >= 4800 and red <= 5400) and (blue >= 4400 and blue <= 5000) and (green >= 4700 and green <= 5500)):
+    if ((red >= 4000 and red <= 5000) and (blue >= 4000 and blue <= 5000) and (green >= 4000 and green <= 5500)):
         print("Place the Cigarette")
         msge="Place the\nCigarette"
         msg.set(msge)
+        #raise_frame(welcome)
     elif ((red >= 3600 and red <= 4299) and (blue >= 3900 and blue <= 5850) and (green >= 5150 and green <= 6300)):
         print("Cigarette Bud Detected")
         msge="Cigarette bud\nDetectedd"
         msg.set(msge)
         raise_frame(PageOne)
-    elif ((red >= 3600 and red <= 4999) and (blue >= 4199 and blue <= 4800) and (green >= 4500 and green <= 5950)):
-        print("Cigarette Bud Detected")
-        msge="Cigarette bud\nDetectedd"
-        msg.set(msge)
-        raise_frame(PageOne)
-    elif ((red >= 4400 and red <= 4699) and (blue >= 4150 and blue <= 5000) and (green >= 4100 and green <= 4950)):
-        print("Cigarette Bud Detected")
-        msge="Cigarette bud\nDetectedd"
-        msg.set(msge)
-        raise_frame(PageOne)
+    #elif ((red >= 3600 and red <= 4999) and (blue >= 4199 and blue <= 4800) and (green >= 4500 and green <= 5950)):
+    #    print("Cigarette Bud Detected")
+    #    msge="Cigarette bud\nDetectedd"
+    #    msg.set(msge)
+    #    raise_frame(PageOne)
+    #elif ((red >= 4400 and red <= 4699) and (blue >= 4150 and blue <= 5000) and (green >= 4100 and green <= 4950)):
+    #    print("Cigarette Bud Detected")
+    #    msge="Cigarette bud\nDetectedd"
+    #    msg.set(msge)
+    #    raise_frame(PageOne)
     elif ((red >= 3600 and red <= 4399) and (blue >= 5000 and blue <= 5600) and (green >= 3900 and green <= 4499)):
         print("Cigarette Bud Detected")
         msge="Cigarette bud\nDetectedd"
@@ -167,7 +168,6 @@ def loop():
         raise_frame(PageOne)
     else:
         pass
-        
     root.after(500, loop)
 
 #create the window
