@@ -151,21 +151,29 @@ def loop():
         msge="Cigarette bud\nDetectedd"
         msg.set(msge)
         raise_frame(PageOne)
+        time.sleep(10)
+        raise_frame(welcome)
     elif ((red >= 3600 and red <= 4999) and (blue >= 4199 and blue <= 4800) and (green >= 4500 and green <= 5950)):
         print("Cigarette Bud Detected")
         msge="Cigarette bud\nDetectedd"
         msg.set(msge)
         raise_frame(PageOne)
+        time.sleep(10)
+        raise_frame(welcome)
     elif ((red >= 4400 and red <= 4699) and (blue >= 4150 and blue <= 5000) and (green >= 4100 and green <= 4950)):
         print("Cigarette Bud Detected")
         msge="Cigarette bud\nDetectedd"
         msg.set(msge)
         raise_frame(PageOne)
+        time.sleep(10)
+        raise_frame(welcome)
     elif ((red >= 3600 and red <= 4399) and (blue >= 5000 and blue <= 5600) and (green >= 3900 and green <= 4499)):
         print("Cigarette Bud Detected")
         msge="Cigarette bud\nDetectedd"
         msg.set(msge)
         raise_frame(PageOne)
+        time.sleep(10)
+        raise_frame(welcome)
     else:
         print("Place the Cigarette")
         msge="Place the\nCigarette"
