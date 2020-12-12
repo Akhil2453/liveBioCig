@@ -121,7 +121,7 @@ def loop():
         GPIO.wait_for_edge(signal, GPIO.FALLING)
     duration = time.time() - start      #seconds to run for loop
     red  = NUM_CYCLES / duration   #in Hz
-    print("red value - ",red)
+    #print("red value - ",red)
     GPIO.output(s2,GPIO.LOW)
     GPIO.output(s3,GPIO.HIGH)
     time.sleep(0.3)
@@ -130,7 +130,7 @@ def loop():
         GPIO.wait_for_edge(signal, GPIO.FALLING)
     duration = time.time() - start
     blue = NUM_CYCLES / duration
-    print("blue value - ",blue)
+    #print("blue value - ",blue)
     GPIO.output(s2,GPIO.HIGH)
     GPIO.output(s3,GPIO.HIGH)
     time.sleep(0.3)
@@ -139,18 +139,18 @@ def loop():
         GPIO.wait_for_edge(signal, GPIO.FALLING)
     duration = time.time() - start
     green = NUM_CYCLES / duration
-    print("green value - ",green)
+    #print("green value - ",green)
     time.sleep(0.5)
     #if ((red >= 4000 and red <= 5000) and (blue >= 4000 and blue <= 5000) and (green >= 4000 and green <= 5500)):
     #    print("Place the Cigarette")
     #    msge="Place the\nCigarette"
     #    msg.set(msge)
         #raise_frame(welcome)
-    if ((red >= 3600 and red <= 4299) and (blue >= 3900 and blue <= 5850) and (green >= 5150 and green <= 6300)):
-        print("Cigarette Bud Detected 1")
-        msge="Cigarette bud\nDetectedd"
-        msg.set(msge)
-        raise_frame(PageOne)
+    #if ((red >= 3600 and red <= 4299) and (blue >= 3900 and blue <= 5850) and (green >= 5150 and green <= 6300)):
+    #    print("Cigarette Bud Detected 1")
+    #    msge="Cigarette bud\nDetectedd"
+    #    msg.set(msge)
+    #    raise_frame(PageOne)
     #elif ((red >= 3600 and red <= 4999) and (blue >= 4199 and blue <= 4800) and (green >= 4500 and green <= 5950)):
     #    print("Cigarette Bud Detected 2")
     #    msge="Cigarette bud\nDetectedd"
@@ -161,15 +161,27 @@ def loop():
     #    msge="Cigarette bud\nDetectedd"
     #    msg.set(msge)
     #    raise_frame(PageOne)
-    elif ((red >= 5000 and red <= 5600) and (blue >= 5000 and blue <= 5600) and (green >= 3900 and green <= 4499)):
-        print("Cigarette Bud Detected 4")
-        msge="Cigarette bud\nDetectedd"
-        msg.set(msge)
-        raise_frame(PageOne)
-    else:
+    #elif ((red >= 5000 and red <= 5600) and (blue >= 5000 and blue <= 5600) and (green >= 3900 and green <= 4499)):
+    #    print("Cigarette Bud Detected 4")
+    #    msge="Cigarette bud\nDetectedd"
+    #    msg.set(msge)
+    #    raise_frame(PageOne)
+    #else:
+    #    print("Place the Cigarette")
+    #    msge="Place the\nCigarette"
+    #    msg.set(msge)
+    if (((red >= 4150 or red >= 4000 or red >= 3000 or (red >= 2200 and red <= 3000) or (red >= 90 and red <= 170)) and red <= 4850)): #and ((blue >= 5150 or blue >= 4300 or (blue >= 2700 and blue <= 2799)) and blue <= 5699) and  ((green >= 4000 or green >= 3200 or (green >= 2200 and green <= 3100)) and green <= 4650)):
         print("Place the Cigarette")
         msge="Place the\nCigarette"
         msg.set(msge)
+    else:
+        print("red value: ", red)
+        print("blue value: ", blue)
+        print("green value: ", green)
+        print("Cigarette Bud Detected")
+        msge="Cigarette bud\nDetectedd"
+        msg.set(msge)
+        raise_frame(PageOne)
     root.after(500, loop)
 
 #create the window

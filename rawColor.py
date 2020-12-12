@@ -26,7 +26,7 @@ def loop():
             GPIO.wait_for_edge(signal, GPIO.FALLING)
         duration = time.time() - start      #seconds to run for loop
         red  = NUM_CYCLES / duration   #in Hz
-        print("red value - ",red)
+        #print("red value - ",red)
         GPIO.output(s2,GPIO.LOW)
         GPIO.output(s3,GPIO.HIGH)
         time.sleep(0.3)
@@ -35,7 +35,7 @@ def loop():
             GPIO.wait_for_edge(signal, GPIO.FALLING)
         duration = time.time() - start
         blue = NUM_CYCLES / duration
-        print("blue value - ",blue)
+        #print("blue value - ",blue)
         GPIO.output(s2,GPIO.HIGH)
         GPIO.output(s3,GPIO.HIGH)
         time.sleep(0.3)
@@ -44,9 +44,15 @@ def loop():
             GPIO.wait_for_edge(signal, GPIO.FALLING)
         duration = time.time() - start
         green = NUM_CYCLES / duration
-        print("green value - ",green)
-        time.sleep(2)  
-
+        #print("green value - ",green)
+        time.sleep(2)
+        if (((red >= 4150 or red >= 4000 or red >= 3000 or (red >= 2200 and red <= 3000) or (red >= 150 and red <= 170)) and red <= 4689) and ((blue >= 5150 or blue >= 4300 or (blue >= 2700 and blue <= 2799)) and blue <= 5699) and  ((green >= 4000 or green >= 3200 or (green >= 2200 and green <= 3100)) and green <= 4650)):
+            print("Nothing Detected")
+        else:
+            print("red value: ", red)
+            print("blue value: ", blue)
+            print("green value: ", green)
+             
 def endprogram():
     GPIO.cleanup()
 
