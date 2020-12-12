@@ -170,15 +170,22 @@ def loop():
     #    print("Place the Cigarette")
     #    msge="Place the\nCigarette"
     #    msg.set(msge)
-    if (((red >= 4150 or red >= 4000 or red >= 3000 or (red >= 2200 and red <= 3000) or (red >= 90 and red <= 170)) and red <= 5100)): #and ((blue >= 5150 or blue >= 4300 or (blue >= 2700 and blue <= 2799)) and blue <= 5699) and  ((green >= 4000 or green >= 3200 or (green >= 2200 and green <= 3100)) and green <= 4650)):
+    if (((red >= 4150 or red >= 4000 or red >= 3000 or (red >= 2200 and red <= 3000) or (red >= 0 and red <= 170)) and red <= 5099)): #and ((blue >= 5150 or blue >= 4300 or (blue >= 2700 and blue <= 2799)) and blue <= 5699) and  ((green >= 4000 or green >= 3200 or (green >= 2200 and green <= 3100)) and green <= 4650)):
         print("Place the Cigarette")
+        print("red value: ", red)
         msge="Place the\nCigarette"
         msg.set(msge)
+    #elif((red >= 4800 and red <= 4899) and (blue >= 4500 and blue <= 5300)):
+    elif(blue >= 3000 and blue <= 5000):
+        print("Cigarette Bud Detected Orange")
+        msge="Cigarette bud\nDetectedd"
+        msg.set(msge)
+        raise_frame(PageOne)
     else:
         print("red value: ", red)
         print("blue value: ", blue)
         print("green value: ", green)
-        print("Cigarette Bud Detected")
+        print("Cigarette Bud Detected all")
         msge="Cigarette bud\nDetectedd"
         msg.set(msge)
         raise_frame(PageOne)
