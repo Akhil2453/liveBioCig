@@ -46,10 +46,10 @@ def number_e():
     global cnt
     num = number.get()
     number.set(num)
-    print(type(num))
-    print("count on clicking enter: ", cnt)
+    pushCnt = str(cnt)
     print(num)
-    para = {'action': 'saveUserData', 'MOB': num, 'MCID': '002000501', 'BTNO': count}
+    print(pushCnt)
+    para = {'action': 'saveUserData', 'MOB': num, 'MCID': '002000501', 'BTNO': pushCnt}
     r = requests.post("http://clickcash.in/apisave/apiDataSavever2.php", data=para)
     print(r.text)
     visible = True
@@ -58,8 +58,6 @@ def number_e():
     cnt = 0
     count.set(num)
     raise_frame(PageTwo)
-    root.after(10000, PageTwo.lower)
-    root.mainloop()
     raise_frame(welcome)
 
 def num_get(num):
