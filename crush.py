@@ -250,7 +250,7 @@ wel.place(x=50, y=185)
 # img.grid(row=0, column=0)
 
 Label(PageOne, text="Enter your Mobile Number: ", font=myfont).grid(columnspan=3, row=0, column=0, padx=100, pady=5)
-Label(PageOne, text="Cigarette Count: ", font=myfont).grid(row=1, column = 0, padx=35, pady=5)
+Label(PageOne, text="Cigarette Count: ", font=myfont).grid(row=1, column = 0, padx=45, pady=5, columnspan=2)
 Label(PageOne, textvariable=count, font=myfont).grid(row=1, column=1, padx=15, pady=5)
 e = Entry(PageOne, textvariable=number, width=30, font=myfont)
 e.grid(columnspan=3, row=2, column=0, padx=150, pady=15)
