@@ -16,7 +16,8 @@ welcome = None
 msg = None
 value = None
 number = ""
-count = 0
+count = ""
+cnt = 0
 
 #GPIO pins
 aux_vcc = 16
@@ -42,6 +43,7 @@ def number_e():
     global number
     global visible
     global count
+    global cnt
     num = number.get()
     number.set(num)
     print(num)
@@ -51,7 +53,8 @@ def number_e():
     visible = True
     num=""
     number.set(num)
-    count = 0
+    cnt=""
+    count.set(cnt)
     raise_frame(PageTwo)
     root.after(10000, PageTwo.lower)
     raise_frame(welcome)
@@ -117,6 +120,7 @@ def loop():
     global num
     global visible
     global count
+    global cnt
     GPIO.output(s2,GPIO.LOW)
     GPIO.output(s3,GPIO.LOW)
     time.sleep(0.3)
@@ -156,7 +160,8 @@ def loop():
         msge="Cigarette bud\nDetectedd"
         msg.set(msge)
         raise_frame(PageOne)
-        count = count + 1
+        cnt = cnt + 1
+        count.set(cnt)
         # if (((red >= 4150 or red >= 4000 or red >= 3000 or (red >= 2200 and red <= 3000) or (red >= 0 and red <= 170) or (red > 3801)) and red <= 5099)):
         #     print("Place the Cigarette")
         #     print("red value: ", red)
@@ -178,7 +183,7 @@ def loop():
         #     msg.set(msge)
         #     raise_frame(PageOne)
         #     count = count + 1
-        print("count: ", count)
+        print("count: ", cnt)
     else:
         print("red value: ", red)
         print("blue value: ", blue)
@@ -187,7 +192,8 @@ def loop():
         msge="Cigarette bud\nDetectedd"
         msg.set(msge)
         raise_frame(PageOne)
-        count = count + 1
+        cnt = cnt + 1
+        count.set(cnt)
         # if (((red >= 4150 or red >= 4000 or red >= 3000 or (red >= 2200 and red <= 3000) or (red >= 0 and red <= 170) or (red > 3801)) and red <= 5099)):
         #     print("Place the Cigarette")
         #     print("red value: ", red)
@@ -227,14 +233,14 @@ for frame in (welcome, PageOne, PageTwo):
 value = DoubleVar()
 msg = StringVar()
 number = StringVar()
-count = IntVar()
+count = StringVar()
 
 dfont = tkFont.Font(size=-6)
 myfont = tkFont.Font(size=20)
 mfont = tkFont.Font(size=12)
 wel = Label(welcome, text="Welcome.\nPlease extinguish and drop your Cigarette bud here", font=myfont)
 wel.grid(row=0, column=1, padx=0, pady=0)
-wel.place(x=50, y=150)
+wel.place(x=50, y=185)
 # load = Image.open("banner.png")
 # load = load.resize((800,250), Image.BICUBIC)
 # render = ImageTk.PhotoImage(load)
