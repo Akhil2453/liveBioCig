@@ -46,6 +46,8 @@ def number_e():
     global cnt
     num = number.get()
     number.set(num)
+    print(type(num))
+    print("count on clicking enter: ", cnt)
     print(num)
     para = {'action': 'saveUserData', 'MOB': num, 'MCID': '002000501', 'BTNO': count}
     r = requests.post("http://clickcash.in/apisave/apiDataSavever2.php", data=para)
@@ -53,9 +55,11 @@ def number_e():
     visible = True
     num=""
     number.set(num)
+    cnt = 0
     count.set(num)
     raise_frame(PageTwo)
     root.after(10000, PageTwo.lower)
+    root.mainloop()
     raise_frame(welcome)
 
 def num_get(num):
@@ -72,7 +76,9 @@ def clr():
     e.delete(0, END)
 
 def cancel():
+    global cnt
     raise_frame(welcome)
+    cnt = 0
 
 #toggle fullscreen
 def toggle_fullscreen(event=None):
