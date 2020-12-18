@@ -157,27 +157,27 @@ def loop():
         msg.set(msge)
         raise_frame(PageOne)
         count = count + 1
-        if (((red >= 4150 or red >= 4000 or red >= 3000 or (red >= 2200 and red <= 3000) or (red >= 0 and red <= 170) or (red > 3801)) and red <= 5099)):
-            print("Place the Cigarette")
-            print("red value: ", red)
-            msge="Place the\nCigarette"
-            msg.set(msge)
-        #elif((red >= 4800 and red <= 4899) and (blue >= 4500 and blue <= 5300)):
-        elif((red >= 3500 and red <= 3600) and (blue >= 3000 and blue <= 4900)):
-            print("Cigarette Bud Detected Orange")
-            msge="Cigarette bud\nDetectedd"
-            msg.set(msge)
-            raise_frame(PageOne)
-            count = count + 1
-        else:
-            print("red value: ", red)
-            print("blue value: ", blue)
-            print("green value: ", green)
-            print("Cigarette Bud Detected all")
-            msge="Cigarette bud\nDetectedd"
-            msg.set(msge)
-            raise_frame(PageOne)
-            count = count + 1
+        # if (((red >= 4150 or red >= 4000 or red >= 3000 or (red >= 2200 and red <= 3000) or (red >= 0 and red <= 170) or (red > 3801)) and red <= 5099)):
+        #     print("Place the Cigarette")
+        #     print("red value: ", red)
+        #     msge="Place the\nCigarette"
+        #     msg.set(msge)
+        # #elif((red >= 4800 and red <= 4899) and (blue >= 4500 and blue <= 5300)):
+        # elif((red >= 3500 and red <= 3600) and (blue >= 3000 and blue <= 4900)):
+        #     print("Cigarette Bud Detected Orange")
+        #     msge="Cigarette bud\nDetectedd"
+        #     msg.set(msge)
+        #     raise_frame(PageOne)
+        #     count = count + 1
+        # else:
+        #     print("red value: ", red)
+        #     print("blue value: ", blue)
+        #     print("green value: ", green)
+        #     print("Cigarette Bud Detected all")
+        #     msge="Cigarette bud\nDetectedd"
+        #     msg.set(msge)
+        #     raise_frame(PageOne)
+        #     count = count + 1
         print("count: ", count)
     else:
         print("red value: ", red)
@@ -188,27 +188,27 @@ def loop():
         msg.set(msge)
         raise_frame(PageOne)
         count = count + 1
-        if (((red >= 4150 or red >= 4000 or red >= 3000 or (red >= 2200 and red <= 3000) or (red >= 0 and red <= 170) or (red > 3801)) and red <= 5099)):
-            print("Place the Cigarette")
-            print("red value: ", red)
-            msge="Place the\nCigarette"
-            msg.set(msge)
-        #elif((red >= 4800 and red <= 4899) and (blue >= 4500 and blue <= 5300)):
-        elif((red >= 3500 and red <= 3600) and (blue >= 3000 and blue <= 4900)):
-            print("Cigarette Bud Detected Orange")
-            msge="Cigarette bud\nDetectedd"
-            msg.set(msge)
-            raise_frame(PageOne)
-            count = count + 1
-        else:
-            print("red value: ", red)
-            print("blue value: ", blue)
-            print("green value: ", green)
-            print("Cigarette Bud Detected all")
-            msge="Cigarette bud\nDetectedd"
-            msg.set(msge)
-            raise_frame(PageOne)
-            count = count + 1
+        # if (((red >= 4150 or red >= 4000 or red >= 3000 or (red >= 2200 and red <= 3000) or (red >= 0 and red <= 170) or (red > 3801)) and red <= 5099)):
+        #     print("Place the Cigarette")
+        #     print("red value: ", red)
+        #     msge="Place the\nCigarette"
+        #     msg.set(msge)
+        # #elif((red >= 4800 and red <= 4899) and (blue >= 4500 and blue <= 5300)):
+        # elif((red >= 3500 and red <= 3600) and (blue >= 3000 and blue <= 4900)):
+        #     print("Cigarette Bud Detected Orange")
+        #     msge="Cigarette bud\nDetectedd"
+        #     msg.set(msge)
+        #     raise_frame(PageOne)
+        #     count = count + 1
+        # else:
+        #     print("red value: ", red)
+        #     print("blue value: ", blue)
+        #     print("green value: ", green)
+        #     print("Cigarette Bud Detected all")
+        #     msge="Cigarette bud\nDetectedd"
+        #     msg.set(msge)
+        #     raise_frame(PageOne)
+        #     count = count + 1
         print("count: ", count)
     root.after(500, loop)
 
