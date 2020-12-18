@@ -215,7 +215,7 @@ def loop():
         #     msg.set(msge)
         #     raise_frame(PageOne)
         #     count = count + 1
-        print("count: ", count)
+        print("count: ", cnt)
     root.after(500, loop)
 
 #create the window
@@ -251,7 +251,7 @@ wel.place(x=50, y=185)
 
 Label(PageOne, text="Enter your Mobile Number: ", font=myfont).grid(columnspan=3, row=0, column=0, padx=100, pady=5)
 Label(PageOne, text="Cigarette Count: ", font=myfont).grid(row=1, column = 0, padx=35, pady=5)
-Label(PageOne, textvariable=count, font=myfont).grid(row=1, column=1, padx=15, pady=5, columnspan=2)
+Label(PageOne, textvariable=count, font=myfont).grid(row=1, column=1, padx=15, pady=5)
 e = Entry(PageOne, textvariable=number, width=30, font=myfont)
 e.grid(columnspan=3, row=2, column=0, padx=150, pady=15)
 Button(PageOne, text='1', command=lambda:num_get(1), borderwidth=5, relief=RAISED, height=1, width=10, font=myfont).grid(row=3, column=0)
