@@ -166,7 +166,7 @@ def loop():
         cnt = cnt + 1
         count.set(cnt)
         print("count: ", cnt)
-        time.sleep(5)
+        time.sleep(2)
     else:
         print("red value: ", red)
         print("blue value: ", blue)
@@ -178,7 +178,7 @@ def loop():
         cnt = cnt + 1
         count.set(cnt)
         print("count: ", cnt)
-        time.sleep(5)
+        time.sleep(2)
     root.after(500, loop)
 
 #create the window
@@ -213,7 +213,7 @@ wel.place(x=50, y=185)
 # img.grid(row=0, column=0)
 
 Label(PageOne, text="Enter your Mobile Number: ", font=myfont).grid(columnspan=3, row=0, column=0, padx=100, pady=5)
-Label(PageOne, text="Cigarette Count: ", font=myfont).grid(row=1, column = 0, padx=95, pady=5, columnspan=2)
+Label(PageOne, text="Cigarette Count: ", font=myfont).grid(row=1, column = 0, padx=115, pady=5, columnspan=2)
 Label(PageOne, textvariable=count, font=myfont).grid(row=1, column=1, padx=15, pady=5)
 e = Entry(PageOne, textvariable=number, width=30, font=myfont)
 e.grid(columnspan=3, row=2, column=0, padx=150, pady=15)
