@@ -166,7 +166,7 @@ def loop():
         cnt = cnt + 1
         count.set(cnt)
         print("count: ", cnt)
-        time.sleep(3)
+        time.sleep(5)
     else:
         print("red value: ", red)
         print("blue value: ", blue)
@@ -178,7 +178,7 @@ def loop():
         cnt = cnt + 1
         count.set(cnt)
         print("count: ", cnt)
-        time.sleep(3)
+        time.sleep(5)
     root.after(500, loop)
 
 #create the window
