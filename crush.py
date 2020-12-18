@@ -53,8 +53,7 @@ def number_e():
     visible = True
     num=""
     number.set(num)
-    cnt=""
-    count.set(cnt)
+    count.set(num)
     raise_frame(PageTwo)
     root.after(10000, PageTwo.lower)
     raise_frame(welcome)
