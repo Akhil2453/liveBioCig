@@ -14,7 +14,7 @@ def setup():
     GPIO.setup(s2,GPIO.OUT)
     GPIO.setup(s3,GPIO.OUT)
     print("\n")
-  
+
 def loop():
     temp = 1
     while(1):  
@@ -46,29 +46,22 @@ def loop():
         green = NUM_CYCLES / duration
         #print("green value - ",green)
         time.sleep(2)
-        #if (((red >= 4150 or red >= 4000 or red >= 3000 or (red >= 2200 and red <= 3000) or (red >= 150 and red <= 170)) and red <= 4689) and ((blue >= 5150 or blue >= 4300 or (blue >= 2700 and blue <= 2799)) and blue <= 5699) and  ((green >= 4000 or green >= 3200 or (green >= 2200 and green <= 3100)) and green <= 4650)):
-        #    print("Nothing Detected")
-        #else:
+        if (red >= 1295 and red<= 1525): #and ((blue >= 5150 or blue >= 4300 or (blue >= 2700 and blue <= 2799)) and blue <= 5699) and  ((green >= 4000 or green >= 3200 or (green >= 2200 and green <= 3100)) and green <= 4650)):
+            print("Place the Cigarette")
+            #print("red value: ", red)
+            #print("blue value: ", blue)
+            #print("green value: ", green)
+            #print("Cigarette Not Detected")
+        #elif(blue >= 3000 and blue <= 5000):
         #    print("red value: ", red)
         #    print("blue value: ", blue)
         #    print("green value: ", green)
-        if (((red >= 4150 or red >= 4000 or red >= 3000 or (red >= 2200 and red <= 3000) or (red >= 0 and red <= 170)) and red <= 5099)): #and ((blue >= 5150 or blue >= 4300 or (blue >= 2700 and blue <= 2799)) and blue <= 5699) and  ((green >= 4000 or green >= 3200 or (green >= 2200 and green <= 3100)) and green <= 4650)):
-            print("Place the Cigarette")
-            print("red value: ", red)
-            print("blue value: ", blue)
-            print("/n")
-            #print("green value: ", green)
-        elif(blue >= 3000 and blue <= 5000):
-            print("red value: ", red)
-            print("blue value: ", blue)
-            print("green value: ", green)
-            print("Cigaretter Detected 1")
+        #    print("Cigaretter Detected 1")
         else:
             print("red value: ", red)
-            print("blue value: ", blue)
-            print("green value: ", green)
+        #    print("blue value: ", blue)
+        #    print("green value: ", green)
             print("Cigarette Detected 2")
-             
 def endprogram():
     GPIO.cleanup()
 

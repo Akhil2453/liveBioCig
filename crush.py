@@ -57,7 +57,7 @@ def number_e():
     number.set(num)
     cnt = 0
     count.set(num)
-    raise_frame(PageTwo)
+    #raise_frame(PageTwo)
     raise_frame(welcome)
 
 def num_get(num):
@@ -152,21 +152,22 @@ def loop():
     green = NUM_CYCLES / duration
     #print("green value - ",green)
     time.sleep(0.5)
-    if (((red >= 4150 or red >= 4000 or red >= 3000 or (red >= 2200 and red <= 3000) or (red >= 0 and red <= 170) or (red > 3801)) and red <= 5099)): #and ((blue >= 5150 or blue >= 4300 or (blue >= 2700 and blue <= 2799)) and blue <= 5699) and  ((green >= 4000 or green >= 3200 or (green >= 2200 and green <= 3100)) and green <= 4650)):
+    #if (((red >= 4150 or red >= 4000 or red >= 3000 or (red >= 1800 and red <= 3000) or (red >= 0 and red <= 170) or (red > 3801)) and red <= 5099)): #and ((blue >= 5150 or blue >= 4300 or (blue >= 2700 and blue <= 2799)) and blue <= 5699) and  ((green >= 4000 or green >= 3200 or (green >= 2200 and green <= 3100)) and green <= 4650)):
+    if (red <= 1100):
         print("Place the Cigarette")
         print("red value: ", red)
         msge="Place the\nCigarette"
         msg.set(msge)
     #elif((red >= 4800 and red <= 4899) and (blue >= 4500 and blue <= 5300)):
-    elif((red >= 3500 and red <= 3600) and (blue >= 3000 and blue <= 4900)):
-        print("Cigarette Bud Detected Orange")
-        msge="Cigarette bud\nDetectedd"
-        msg.set(msge)
-        raise_frame(PageOne)
-        cnt = cnt + 1
-        count.set(cnt)
-        print("count: ", cnt)
-        time.sleep(2)
+    #elif((red >= 3500 and red <= 3600) and (blue >= 3000 and blue <= 4900)):
+    #    print("Cigarette Bud Detected Orange")
+    #    msge="Cigarette bud\nDetectedd"
+    #    msg.set(msge)
+    #    raise_frame(PageOne)
+    #    cnt = cnt + 1
+    #    count.set(cnt)
+    #    print("count: ", cnt)
+    #    time.sleep(2)
     else:
         print("red value: ", red)
         print("blue value: ", blue)
@@ -178,12 +179,12 @@ def loop():
         cnt = cnt + 1
         count.set(cnt)
         print("count: ", cnt)
-        time.sleep(2)
+        time.sleep(5)
     root.after(500, loop)
 
 #create the window
 root = Tk()
-root.title("Cigarette Bud Crusher: BioCrux")
+root.title("Cigarette Butt Crusher: BioCrux")
 root.geometry('800x480')
 
 welcome = Frame(root)
@@ -201,7 +202,7 @@ count = StringVar()
 dfont = tkFont.Font(size=-6)
 myfont = tkFont.Font(size=20)
 mfont = tkFont.Font(size=12)
-wel = Label(welcome, text="Welcome.\nPlease extinguish and drop your Cigarette bud here", font=myfont)
+wel = Label(welcome, text="Welcome\nPlease extinguish and drop your Cigarette butt here", font=myfont)
 wel.grid(row=0, column=1, padx=0, pady=0)
 wel.place(x=50, y=185)
 # load = Image.open("banner.png")
