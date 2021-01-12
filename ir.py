@@ -4,7 +4,6 @@ import time
 from tkinter import *
 import tkinter.font as tkFont
 import requests
-from PIL import Image, ImageTk
 
 def raise_frame(frame):
     frame.tkraise()
@@ -21,23 +20,11 @@ cnt = 0
 
 #GPIO pins
 aux_vcc = 16
-s2 = 5
-s3 = 6
 signal = 26
 NUM_CYCLES = 10
 
-
 #Fulscreen or windowed
 fullscreen = False
-
-def count10():
-    t=10
-    while t:
-        mins, secs = divmod(t, 60)
-        timer = '{:02d}:{:02d}'.format(mins, secs)
-        print(timer,"\r")
-        time.sleep(1)
-        t -= 1
 
 def number_e():
     global number
@@ -110,8 +97,6 @@ def setup():
     GPIO.setup(signal, GPIO.IN, pull_up_down=GPIO.PUD_UP)
     GPIO.setup(aux_vcc, GPIO.OUT)
     GPIO.output(aux_vcc, GPIO.HIGH)
-    GPIO.setup(s2, GPIO.OUT)
-    GPIO.setup(s3, GPIO.OUT)
     print("\n")
 
 def endprogram():
@@ -127,54 +112,14 @@ def loop():
     global visible
     global count
     global cnt
-    GPIO.output(s2,GPIO.LOW)
-    GPIO.output(s3,GPIO.LOW)
-    time.sleep(0.3)
-    start = time.time()
-    for impulse_count in range(NUM_CYCLES):
-        GPIO.wait_for_edge(signal, GPIO.FALLING)
-    duration = time.time() - start      #seconds to run for loop
-    red  = NUM_CYCLES / duration   #in Hz
-    #print("red value - ",red)
-    GPIO.output(s2,GPIO.LOW)
-    GPIO.output(s3,GPIO.HIGH)
-    time.sleep(0.3)
-    start = time.time()
-    for impulse_count in range(NUM_CYCLES):
-        GPIO.wait_for_edge(signal, GPIO.FALLING)
-    duration = time.time() - start
-    blue = NUM_CYCLES / duration
-    #print("blue value - ",blue)
-    GPIO.output(s2,GPIO.HIGH)
-    GPIO.output(s3,GPIO.HIGH)
-    time.sleep(0.3)
-    start = time.time()
-    for impulse_count in range(NUM_CYCLES):
-        GPIO.wait_for_edge(signal, GPIO.FALLING)
-    duration = time.time() - start
-    green = NUM_CYCLES / duration
-    #print("green value - ",green)
-    time.sleep(0.5)
-    #if (((red >= 4150 or red >= 4000 or red >= 3000 or (red >= 1800 and red <= 3000) or (red >= 0 and red <= 170) or (red > 3801)) and red <= 5099)): #and ((blue >= 5150 or blue >= 4300 or (blue >= 2700 and blue <= 2799)) and blue <= 5699) and  ((green >= 4000 or green >= 3200 or (green >= 2200 and green <= 3100)) and green <= 4650)):
-    if (red <= 1100):
+    int a = GPIO.input(signal)
+    if a == 1:
         print("Place the Cigarette")
-        print("red value: ", red)
+        print(a)
         msge="Place the\nCigarette"
         msg.set(msge)
-    #elif((red >= 4800 and red <= 4899) and (blue >= 4500 and blue <= 5300)):
-    #elif((red >= 3500 and red <= 3600) and (blue >= 3000 and blue <= 4900)):
-    #    print("Cigarette Bud Detected Orange")
-    #    msge="Cigarette bud\nDetectedd"
-    #    msg.set(msge)
-    #    raise_frame(PageOne)
-    #    cnt = cnt + 1
-    #    count.set(cnt)
-    #    print("count: ", cnt)
-    #    time.sleep(2)
     else:
-        print("red value: ", red)
-        print("blue value: ", blue)
-        print("green value: ", green)
+        print(a)
         print("Cigarette Bud Detected all")
         msge="Cigarette bud\nDetectedd"
         msg.set(msge)
@@ -208,13 +153,6 @@ mfont = tkFont.Font(size=12)
 wel = Label(welcome, text="Welcome\nPlease extinguish and drop your Cigarette butt here", font=myfont)
 wel.grid(row=0, column=1, padx=0, pady=0)
 wel.place(x=50, y=185)
-# load = Image.open("banner.png")
-# load = load.resize((800,250), Image.BICUBIC)
-# render = ImageTk.PhotoImage(load)
-# img = Label(welcome, image=render)
-# img.image = render
-# img.place(x=0, y=0)
-# img.grid(row=0, column=0)
 
 Label(PageOne, text="Enter your Mobile Number: ", font=myfont).grid(columnspan=3, row=0, column=0, padx=100, pady=5)
 Label(PageOne, text="Cigarette Count: ", font=myfont).grid(row=1, column = 0, padx=115, pady=5, columnspan=2)
