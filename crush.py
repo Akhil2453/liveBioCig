@@ -156,7 +156,7 @@ def loop():
     #print("green value - ",green)
     time.sleep(0.5)
     #if (((red >= 4150 or red >= 4000 or red >= 3000 or (red >= 1800 and red <= 3000) or (red >= 0 and red <= 170) or (red > 3801)) and red <= 5099)): #and ((blue >= 5150 or blue >= 4300 or (blue >= 2700 and blue <= 2799)) and blue <= 5699) and  ((green >= 4000 or green >= 3200 or (green >= 2200 and green <= 3100)) and green <= 4650)):
-    if (red <= 1100):
+    if (red <= 1200):
         print("Place the Cigarette")
         print("red value: ", red)
         msge="Place the\nCigarette"
@@ -182,7 +182,9 @@ def loop():
         cnt = cnt + 1
         count.set(cnt)
         print("count: ", cnt)
-        time.sleep(5)
+        time.sleep(3)
+        if (cnt >= 3):
+            root.after(30000, raise_frame(welcome))
     root.after(500, loop)
 
 #create the window
