@@ -128,12 +128,12 @@ def loop():
     global count
     global cnt
     a = int(input("enter 1 or 0: "))
-    if (a == 0):
-        print("Place the Cigarette")
-        print("red value: ", red)
-        msge="Place the\nCigarette"
-        msg.set(msge)
-    else:
+    # if (a == 0):
+    #     print("Place the Cigarette")
+    #     print("red value: ", red)
+    #     msge="Place the\nCigarette"
+    #     msg.set(msge)
+    if (a == 1):
         msge="Cigarette bud\nDetectedd"
         msg.set(msge)
         raise_frame(countScreen)
@@ -192,8 +192,6 @@ Button(PageOne, text='Cancel', command=cancel, borderwidth=5, relief=RAISED, hei
 
 Label(PageTwo, text=" ", font=myfont).grid(row=0, column=1, padx=5, pady=5)
 Label(PageTwo, text="Thank You", font=myfont).grid(row=1, column=1, padx=150, pady=200)
-
-
 
 root.bind('<F11>', toggle_fullscreen)
 root.bind('<Escape>', end_fullscreen)
