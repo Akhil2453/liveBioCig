@@ -127,65 +127,20 @@ def loop():
     global visible
     global count
     global cnt
-#    GPIO.output(s2,GPIO.LOW)
-#    GPIO.output(s3,GPIO.LOW)
-#    time.sleep(0.3)
-#    start = time.time()
-#    for impulse_count in range(NUM_CYCLES):
-#        GPIO.wait_for_edge(signal, GPIO.FALLING)
-#    duration = time.time() - start      #seconds to run for loop
-#    red  = NUM_CYCLES / duration   #in Hz
-    #print("red value - ",red)
-#    GPIO.output(s2,GPIO.LOW)
-#    GPIO.output(s3,GPIO.HIGH)
-#    time.sleep(0.3)
-#    start = time.time()
-#    for impulse_count in range(NUM_CYCLES):
-#        GPIO.wait_for_edge(signal, GPIO.FALLING)
-#    duration = time.time() - start
-#    blue = NUM_CYCLES / duration
-    #print("blue value - ",blue)
-#    GPIO.output(s2,GPIO.HIGH)
-#    GPIO.output(s3,GPIO.HIGH)
-#    time.sleep(0.3)
-#    start = time.time()
-#    for impulse_count in range(NUM_CYCLES):
-#        GPIO.wait_for_edge(signal, GPIO.FALLING)
-#    duration = time.time() - start
-#    green = NUM_CYCLES / duration
-    #print("green value - ",green)
-#    time.sleep(0.5)
-    #if (((red >= 4150 or red >= 4000 or red >= 3000 or (red >= 1800 and red <= 3000) or (red >= 0 and red <= 170) or (red > 3801)) and red <= 5099)): #and ((blue >= 5150 or blue >= 4300 or (blue >= 2700 and blue <= 2799)) and blue <= 5699) and  ((green >= 4000 or green >= 3200 or (green >= 2200 and green <= 3100)) and green <= 4650)):
     a = int(input("enter 1 or 0: "))
     if (a == 0):
         print("Place the Cigarette")
         print("red value: ", red)
         msge="Place the\nCigarette"
         msg.set(msge)
-    #elif((red >= 4800 and red <= 4899) and (blue >= 4500 and blue <= 5300)):
-    #elif((red >= 3500 and red <= 3600) and (blue >= 3000 and blue <= 4900)):
-    #    print("Cigarette Bud Detected Orange")
-    #    msge="Cigarette bud\nDetectedd"
-    #    msg.set(msge)
-    #    raise_frame(PageOne)
-    #    cnt = cnt + 1
-    #    count.set(cnt)
-    #    print("count: ", cnt)
-    #    time.sleep(2)
     else:
-        #print("red value: ", red)
-        #print("blue value: ", blue)
-        #print("green value: ", green)
-        #print("Cigarette Bud Detected all")
         msge="Cigarette bud\nDetectedd"
         msg.set(msge)
         raise_frame(countScreen)
         cnt = cnt + 1
         count.set(cnt)
         print("count: ", cnt)
-        time.sleep(3)
-        #if (cnt >= 1):
-        #    root.after(5000, raise_frame(PageOne))
+        #time.sleep(3)
     root.after(500, loop)
 
 #create the window
@@ -212,17 +167,12 @@ mfont = tkFont.Font(size=12)
 wel = Label(welcome, text="Welcome\nPlease extinguish and drop your Cigarette butt here", font=myfont)
 wel.grid(row=0, column=1, padx=0, pady=0)
 wel.place(x=50, y=185)
-# load = Image.open("banner.png")
-# load = load.resize((800,250), Image.BICUBIC)
-# render = ImageTk.PhotoImage(load)
-# img = Label(welcome, image=render)
-# img.image = render
-# img.place(x=0, y=0)
-# img.grid(row=0, column=0)
+
+Label(countScreen, text="Cigarette Count: ", font=myfont).grid(row=1, column = 0, padx=115, pady=5, columnspan=2)
+Label(countScreen, textvariable=count, font=myfont).grid(row=1, column=1, padx=15, pady=5)
+Button(countScreen, text="welcomeScreen", command=lambda:raise_frame(PageOne)).grid(row=2, column=1, padx=35, pady=35)
 
 Label(PageOne, text="Enter your Mobile Number: ", font=myfont).grid(columnspan=3, row=0, column=0, padx=100, pady=5)
-Label(countScreen, text="Cigarette Count: ", font=myfont).grid(row=1, column = 0, padx=115, pady=5, columnspan=2)
-Label(PageOne, textvariable=count, font=myfont).grid(row=1, column=1, padx=15, pady=5)
 e = Entry(PageOne, textvariable=number, width=30, font=myfont)
 e.grid(columnspan=3, row=2, column=0, padx=150, pady=15)
 Button(PageOne, text='1', command=lambda:num_get(1), borderwidth=5, relief=RAISED, height=1, width=10, font=myfont).grid(row=3, column=0)
@@ -242,7 +192,7 @@ Button(PageOne, text='Cancel', command=cancel, borderwidth=5, relief=RAISED, hei
 
 Label(PageTwo, text=" ", font=myfont).grid(row=0, column=1, padx=5, pady=5)
 Label(PageTwo, text="Thank You", font=myfont).grid(row=1, column=1, padx=150, pady=200)
-Button(PageTwo, text="welcomeScreen", command=lambda:raise_frame(welcome)).grid(row=2, column=1, padx=35, pady=35)
+
 
 
 root.bind('<F11>', toggle_fullscreen)
