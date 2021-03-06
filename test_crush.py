@@ -164,7 +164,7 @@ cS1.place(x=500, y=200)
 cSbt = Button(countScreen, text="Next", height=2, width=15, command=lambda:raise_frame(PageOne))
 cSbt.place(x=315, y=275)
 
-Label(PageOne, text="Enter your Mobile Number: ", font=myfont).grid(columnspan=3, row=0, column=0, padx=100, pady=5)
+Label(PageOne, text="Enter your Mobile Number: ", font=myfont).grid(columnspan=3, row=0, column=0, padx=100, pady=20)
 e = Entry(PageOne, textvariable=number, width=30, font=myfont)
 e.grid(columnspan=3, row=2, column=0, padx=150, pady=15)
 Button(PageOne, text='1', command=lambda:num_get(1), borderwidth=5, relief=RAISED, height=1, width=10, font=myfont).grid(row=3, column=0)
@@ -179,7 +179,7 @@ Button(PageOne, text='9', command=lambda:num_get(9), borderwidth=5, relief=RAISE
 Button(PageOne, text='0', command=lambda:num_get(0), borderwidth=5, relief=RAISED, height=1, width=10, font=myfont).grid(row=6, column=1)
 Button(PageOne, text='Delete', command=delt, borderwidth=5, relief=RAISED, height=1, width=10, font=myfont).grid(row=6, column=2)
 Button(PageOne, text='Clear', command=clr, borderwidth=5, relief=RAISED, height=1, width=10, font=myfont).grid(row=6, column=0)
-Button(PageOne, text='Enter', bg='#0052cc', fg='#ffffff', command=number_e, borderwidth=5, relief=RAISED, height=1, width=20, font=myfont).grid(row=7, column=0, columnspan=2)
+Button(PageOne, text='Enter', bg='#0052cc', fg='#ffffff', command=number_e, borderwidth=5, relief=RAISED, height=1, width=25, font=myfont).grid(row=7, column=0, columnspan=2)
 Button(PageOne, text='Cancel', command=cancel, borderwidth=5, relief=RAISED, height=1, width=10, font=myfont).grid(row=7, column=2)
 
 Label(PageTwo, text="Thank You", font=myfont).place(x=325, y=200)
