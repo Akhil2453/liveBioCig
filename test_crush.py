@@ -130,8 +130,6 @@ def loop():
         count.set(cnt)
         print("count: ", cnt)
         #time.sleep(3)
-        if (cnt <= 5):
-            root.after(10000, raise_frame(PageOne))
     root.after(500, loop)
 
 #create the window
