@@ -130,6 +130,8 @@ def loop():
         count.set(cnt)
         print("count: ", cnt)
         #time.sleep(3)
+        if (cnt <= 5):
+            root.after(10000, raise_frame(PageOne))
     root.after(500, loop)
 
 #create the window
@@ -182,7 +184,6 @@ Button(PageOne, text='Clear', command=clr, borderwidth=5, relief=RAISED, height=
 Button(PageOne, text='Enter', bg='#0052cc', fg='#ffffff', command=number_e, borderwidth=5, relief=RAISED, height=1, width=20, font=myfont).grid(row=7, column=0, columnspan=2)
 Button(PageOne, text='Cancel', command=cancel, borderwidth=5, relief=RAISED, height=1, width=10, font=myfont).grid(row=7, column=2)
 
-Label(PageTwo, text=" ", font=myfont).grid(row=0, column=1, padx=5, pady=5)
 Label(PageTwo, text="Thank You", font=myfont).place(x=325, y=200)
 
 root.bind('<F11>', toggle_fullscreen)

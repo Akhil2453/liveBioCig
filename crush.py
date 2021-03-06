@@ -4,7 +4,6 @@ import time
 from tkinter import *
 import tkinter.font as tkFont
 import requests
-from PIL import Image, ImageTk
 
 def raise_frame(frame):
     frame.tkraise()
@@ -26,18 +25,8 @@ s3 = 6
 signal = 26
 NUM_CYCLES = 10
 
-
 #Fulscreen or windowed
 fullscreen = False
-
-def count10():
-    t=10
-    while t:
-        mins, secs = divmod(t, 60)
-        timer = '{:02d}:{:02d}'.format(mins, secs)
-        print(timer,"\r")
-        time.sleep(1)
-        t -= 1
 
 def number_e():
     global number
@@ -155,22 +144,11 @@ def loop():
     green = NUM_CYCLES / duration
     #print("green value - ",green)
     time.sleep(0.5)
-    #if (((red >= 4150 or red >= 4000 or red >= 3000 or (red >= 1800 and red <= 3000) or (red >= 0 and red <= 170) or (red > 3801)) and red <= 5099)): #and ((blue >= 5150 or blue >= 4300 or (blue >= 2700 and blue <= 2799)) and blue <= 5699) and  ((green >= 4000 or green >= 3200 or (green >= 2200 and green <= 3100)) and green <= 4650)):
     if (red <= 1100):
         print("Place the Cigarette")
         print("red value: ", red)
         msge="Place the\nCigarette"
         msg.set(msge)
-    #elif((red >= 4800 and red <= 4899) and (blue >= 4500 and blue <= 5300)):
-    #elif((red >= 3500 and red <= 3600) and (blue >= 3000 and blue <= 4900)):
-    #    print("Cigarette Bud Detected Orange")
-    #    msge="Cigarette bud\nDetectedd"
-    #    msg.set(msge)
-    #    raise_frame(PageOne)
-    #    cnt = cnt + 1
-    #    count.set(cnt)
-    #    print("count: ", cnt)
-    #    time.sleep(2)
     else:
         print("red value: ", red)
         print("blue value: ", blue)
@@ -178,13 +156,13 @@ def loop():
         print("Cigarette Bud Detected all")
         msge="Cigarette bud\nDetectedd"
         msg.set(msge)
-        raise_frame(PageOne)
+        raise_frame(countScreen)
         cnt = cnt + 1
         count.set(cnt)
         print("count: ", cnt)
         time.sleep(3)
-        #if (cnt >= 3):
-        #    root.after(30000, raise_frame(welcome))
+        if (cnt <= 5):
+            root.after(10000, raise_frame(PageOne))
     root.after(500, loop)
 
 #create the window
@@ -195,8 +173,9 @@ root.geometry('800x480')
 welcome = Frame(root)
 PageOne = Frame(root)
 PageTwo = Frame(root)
+countScreen = Frame(root)
 
-for frame in (welcome, PageOne, PageTwo):
+for frame in (welcome, PageOne, PageTwo, countScreen):
     frame.grid(row=7, column=3, sticky='news')
 
 value = DoubleVar()
@@ -210,17 +189,15 @@ mfont = tkFont.Font(size=12)
 wel = Label(welcome, text="Welcome\nPlease extinguish and drop your Cigarette butt here", font=myfont)
 wel.grid(row=0, column=1, padx=0, pady=0)
 wel.place(x=50, y=185)
-# load = Image.open("banner.png")
-# load = load.resize((800,250), Image.BICUBIC)
-# render = ImageTk.PhotoImage(load)
-# img = Label(welcome, image=render)
-# img.image = render
-# img.place(x=0, y=0)
-# img.grid(row=0, column=0)
+
+cS = Label(countScreen, text="Cigarette Count: ", font=myfont)
+cS.place(x=250, y=200)
+cS1 = Label(countScreen, textvariable=count, font=myfont)
+cS1.place(x=500, y=200)
+cSbt = Button(countScreen, text="Next", height=2, width=15, command=lambda:raise_frame(PageOne))
+cSbt.place(x=315, y=275)
 
 Label(PageOne, text="Enter your Mobile Number: ", font=myfont).grid(columnspan=3, row=0, column=0, padx=100, pady=5)
-Label(PageOne, text="Cigarette Count: ", font=myfont).grid(row=1, column = 0, padx=115, pady=5, columnspan=2)
-Label(PageOne, textvariable=count, font=myfont).grid(row=1, column=1, padx=15, pady=5)
 e = Entry(PageOne, textvariable=number, width=30, font=myfont)
 e.grid(columnspan=3, row=2, column=0, padx=150, pady=15)
 Button(PageOne, text='1', command=lambda:num_get(1), borderwidth=5, relief=RAISED, height=1, width=10, font=myfont).grid(row=3, column=0)
@@ -238,9 +215,7 @@ Button(PageOne, text='Clear', command=clr, borderwidth=5, relief=RAISED, height=
 Button(PageOne, text='Enter', bg='#0052cc', fg='#ffffff', command=number_e, borderwidth=5, relief=RAISED, height=1, width=20, font=myfont).grid(row=7, column=0, columnspan=2)
 Button(PageOne, text='Cancel', command=cancel, borderwidth=5, relief=RAISED, height=1, width=10, font=myfont).grid(row=7, column=2)
 
-Label(PageTwo, text=" ", font=myfont).grid(row=0, column=1, padx=5, pady=5)
-Label(PageTwo, text="Thank You", font=myfont).grid(row=1, column=1, padx=150, pady=200)
-Button(PageTwo, text="welcomeScreen", command=lambda:raise_frame(welcome)).grid(row=2, column=1, padx=35, pady=35)
+Label(PageTwo, text="Thank You", font=myfont).place(x=325, y=200)
 
 
 root.bind('<F11>', toggle_fullscreen)
