@@ -35,27 +35,14 @@ def number_e():
     global cnt
     num = number.get()
     number.set(num)
-    
     raise_frame(countScreen)
-    root.update()
-    root.update()
-    root.update()
-    root.update()
-    root.update()
-    root.update()
-    root.update()
-    root.update()
-    root.update()
-    root.update()
-    root.update()
-    root.update()
-    root.update()
-    root.update()
-    root.update()
-    root.update()
-    root.update()
-    root.update()
-    root.update()
+
+def next():
+    global number
+    global visible
+    global count
+    global cnt
+    
     raise_frame(PageTwo)
     root.update()
     pushCnt = str(cnt)
@@ -69,6 +56,9 @@ def number_e():
     number.set(num)
     cnt = 0
     count.set(num)
+    time.sleep(5)
+    raise_frame(welcome)
+    root.update()
 
 def num_get(num):
     current = e.get()
