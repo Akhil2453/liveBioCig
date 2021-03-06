@@ -46,11 +46,7 @@ def number_e():
     number.set(num)
     cnt = 0
     count.set(num)
-    raise_frame(PageTwo)
-    root.update()
-    time.sleep(5)
-    raise_frame(welcome)
-    root.update()
+    raise_frame(countScreen)
 
 def num_get(num):
     current = e.get()
@@ -125,7 +121,7 @@ def loop():
     if (a == 1):
         msge="Cigarette bud\nDetectedd"
         msg.set(msge)
-        raise_frame(countScreen)
+        raise_frame(PageOne)
         cnt = cnt + 1
         count.set(cnt)
         print("count: ", cnt)
