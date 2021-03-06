@@ -35,6 +35,29 @@ def number_e():
     global cnt
     num = number.get()
     number.set(num)
+    
+    raise_frame(countScreen)
+    root.update()
+    root.update()
+    root.update()
+    root.update()
+    root.update()
+    root.update()
+    root.update()
+    root.update()
+    root.update()
+    root.update()
+    root.update()
+    root.update()
+    root.update()
+    root.update()
+    root.update()
+    root.update()
+    root.update()
+    root.update()
+    root.update()
+    raise_frame(PageTwo)
+    root.update()
     pushCnt = str(cnt)
     print(num)
     print(pushCnt)
@@ -46,7 +69,6 @@ def number_e():
     number.set(num)
     cnt = 0
     count.set(num)
-    raise_frame(countScreen)
 
 def num_get(num):
     current = e.get()
@@ -113,11 +135,6 @@ def loop():
     global count
     global cnt
     a = int(input("enter 1 or 0: "))
-    # if (a == 0):
-    #     print("Place the Cigarette")
-    #     print("red value: ", red)
-    #     msge="Place the\nCigarette"
-    #     msg.set(msge)
     if (a == 1):
         msge="Cigarette bud\nDetectedd"
         msg.set(msge)
