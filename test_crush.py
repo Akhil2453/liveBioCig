@@ -4,7 +4,6 @@ import time
 from tkinter import *
 import tkinter.font as tkFont
 import requests
-from PIL import Image, ImageTk
 
 def raise_frame(frame):
     frame.tkraise()
@@ -26,18 +25,8 @@ s3 = 6
 signal = 26
 NUM_CYCLES = 10
 
-
 #Fulscreen or windowed
 fullscreen = False
-
-def count10():
-    t=10
-    while t:
-        mins, secs = divmod(t, 60)
-        timer = '{:02d}:{:02d}'.format(mins, secs)
-        print(timer,"\r")
-        time.sleep(1)
-        t -= 1
 
 def number_e():
     global number
@@ -153,7 +142,7 @@ PageOne = Frame(root)
 PageTwo = Frame(root)
 countScreen = Frame(root)
 
-for frame in (welcome, PageOne, PageTwo):
+for frame in (welcome, PageOne, PageTwo, countScreen):
     frame.grid(row=7, column=3, sticky='news')
 
 value = DoubleVar()
@@ -168,9 +157,12 @@ wel = Label(welcome, text="Welcome\nPlease extinguish and drop your Cigarette bu
 wel.grid(row=0, column=1, padx=0, pady=0)
 wel.place(x=50, y=185)
 
-Label(countScreen, text="Cigarette Count: ", font=myfont).grid(row=1, column = 0, padx=115, pady=5, columnspan=2)
-Label(countScreen, textvariable=count, font=myfont).grid(row=1, column=1, padx=15, pady=5)
-Button(countScreen, text="welcomeScreen", command=lambda:raise_frame(PageOne)).grid(row=2, column=1, padx=35, pady=35)
+cS = Label(countScreen, text="Cigarette Count: ", font=myfont)
+cS.place(x=250, y=200)
+cS1 = Label(countScreen, textvariable=count, font=myfont)
+cS1.place(x=500, y=200)
+cSbt = Button(countScreen, text="Next", height=2, width=15, command=lambda:raise_frame(PageOne))
+cSbt.place(x=315, y=275)
 
 Label(PageOne, text="Enter your Mobile Number: ", font=myfont).grid(columnspan=3, row=0, column=0, padx=100, pady=5)
 e = Entry(PageOne, textvariable=number, width=30, font=myfont)
