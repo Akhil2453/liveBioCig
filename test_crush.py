@@ -183,7 +183,7 @@ Button(PageOne, text='Enter', bg='#0052cc', fg='#ffffff', command=number_e, bord
 Button(PageOne, text='Cancel', command=cancel, borderwidth=5, relief=RAISED, height=1, width=10, font=myfont).grid(row=7, column=2)
 
 Label(PageTwo, text=" ", font=myfont).grid(row=0, column=1, padx=5, pady=5)
-Label(PageTwo, text="Thank You", font=myfont).grid(row=1, column=1, padx=150, pady=200)
+Label(PageTwo, text="Thank You", font=myfont).place(x=325, y=200)
 
 root.bind('<F11>', toggle_fullscreen)
 root.bind('<Escape>', end_fullscreen)
