@@ -17,6 +17,7 @@ value = None
 number = ""
 count = ""
 cnt = 0
+a = 0
 
 #GPIO pins
 aux_vcc = 16
@@ -35,6 +36,9 @@ def number_e():
     global cnt
     num = number.get()
     number.set(num)
+    cnt = cnt + 1
+    count.set(cnt)
+    print("count: ", cnt)
     raise_frame(countScreen)
 
 def next():
@@ -42,6 +46,8 @@ def next():
     global visible
     global count
     global cnt
+    global a
+
     
     raise_frame(PageTwo)
     root.update()
@@ -56,6 +62,7 @@ def next():
     number.set(num)
     cnt = 0
     count.set(num)
+    a = 0
     time.sleep(5)
     raise_frame(welcome)
     root.update()
@@ -129,9 +136,7 @@ def loop():
         msge="Cigarette bud\nDetectedd"
         msg.set(msge)
         raise_frame(PageOne)
-        cnt = cnt + 1
-        count.set(cnt)
-        print("count: ", cnt)
+        
         #time.sleep(3)
     root.after(500, loop)
 
