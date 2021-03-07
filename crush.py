@@ -17,6 +17,7 @@ value = None
 number = ""
 count = ""
 cnt = 0
+num = 0
 
 #GPIO pins
 aux_vcc = 16
@@ -33,10 +34,28 @@ def number_e():
     global visible
     global count
     global cnt
+    global num
     num = number.get()
     number.set(num)
-    pushCnt = str(cnt)
     print(num)
+    cnt = cnt + 1
+    count.set(cnt)
+    print("count: ", cnt)
+    raise_frame(countScreen)
+    root.after(25000, next)
+
+def next():
+    global number
+    global visible
+    global count
+    global cnt
+    global a
+    global num
+    raise_frame(PageTwo)
+    root.update()
+    pushCnt = str(cnt)
+    print("Number in next: ")
+    print(number)
     print(pushCnt)
     para = {'action': 'saveUserData', 'MOB': num, 'MCID': '002000501', 'BTNO': pushCnt}
     r = requests.post("http://clickcash.in/apisave/apiDataSavever2.php", data=para)
@@ -46,8 +65,7 @@ def number_e():
     number.set(num)
     cnt = 0
     count.set(num)
-    raise_frame(PageTwo)
-    root.update()
+    a = 0
     time.sleep(5)
     raise_frame(welcome)
     root.update()
@@ -156,13 +174,13 @@ def loop():
         print("Cigarette Bud Detected all")
         msge="Cigarette bud\nDetectedd"
         msg.set(msge)
-        raise_frame(countScreen)
+        raise_frame(PageOne)
         cnt = cnt + 1
         count.set(cnt)
         print("count: ", cnt)
         time.sleep(3)
-        if (cnt <= 5):
-            root.after(10000, raise_frame(PageOne))
+        raise_frame(countScreen)
+        root.after(25000, next)
     root.after(500, loop)
 
 #create the window

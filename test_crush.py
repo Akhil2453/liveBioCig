@@ -44,6 +44,7 @@ def number_e():
     print("count: ", cnt)
     raise_frame(countScreen)
     root.after(5000, next)
+    
 def next():
     global number
     global visible
