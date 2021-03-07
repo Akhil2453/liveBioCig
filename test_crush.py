@@ -47,8 +47,6 @@ def next():
     global count
     global cnt
     global a
-
-    
     raise_frame(PageTwo)
     root.update()
     pushCnt = str(cnt)
@@ -132,12 +130,13 @@ def loop():
     global count
     global cnt
     a = int(input("enter 1 or 0: "))
-    if (a == 1):
+    if ((a == 1) and (cnt == 0)):
         msge="Cigarette bud\nDetectedd"
         msg.set(msge)
         raise_frame(PageOne)
-        
         #time.sleep(3)
+    else:
+        raise_frame(countScreen)
     root.after(500, loop)
 
 #create the window
@@ -170,7 +169,7 @@ cS = Label(countScreen, text="Cigarette Count: ", font=myfont)
 cS.place(x=250, y=200)
 cS1 = Label(countScreen, textvariable=count, font=myfont)
 cS1.place(x=500, y=200)
-cSbt = Button(countScreen, text="Next", height=2, width=15, command=lambda:raise_frame(PageOne))
+cSbt = Button(countScreen, text="Next", height=2, width=15, command=lambda:next())
 cSbt.place(x=315, y=275)
 
 Label(PageOne, text="Enter your Mobile Number: ", font=myfont).grid(columnspan=3, row=0, column=0, padx=100, pady=20)
