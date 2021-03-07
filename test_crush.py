@@ -47,6 +47,7 @@ def next():
     global count
     global cnt
     global a
+    global num
     raise_frame(PageTwo)
     root.update()
     pushCnt = str(cnt)
