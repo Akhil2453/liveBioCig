@@ -18,6 +18,7 @@ number = ""
 count = ""
 cnt = 0
 a = 0
+num = 0
 
 #GPIO pins
 aux_vcc = 16
@@ -34,6 +35,7 @@ def number_e():
     global visible
     global count
     global cnt
+    global num
     num = number.get()
     number.set(num)
     print(num)
@@ -143,6 +145,8 @@ def loop():
         count.set(cnt)
         print("count: ", cnt)
         raise_frame(countScreen)
+        root.after(2000, next)
+        root.update()
     root.after(500, loop)
 
 #create the window
@@ -196,7 +200,7 @@ Button(PageOne, text='Clear', command=clr, borderwidth=5, relief=RAISED, height=
 Button(PageOne, text='Enter', bg='#0052cc', fg='#ffffff', command=number_e, borderwidth=5, relief=RAISED, height=1, width=27, font=myfont).grid(row=7, column=0, columnspan=2)
 Button(PageOne, text='Cancel', command=cancel, borderwidth=5, relief=RAISED, height=1, width=10, font=myfont).grid(row=7, column=2)
 
-Label(PageTwo, text="Thank You", font=tyFont).place(x=325, y=200)
+Label(PageTwo, text="Thank You", font=tyFont).place(x=275, y=180)
 
 root.bind('<F11>', toggle_fullscreen)
 root.bind('<Escape>', end_fullscreen)
