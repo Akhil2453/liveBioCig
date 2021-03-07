@@ -145,8 +145,8 @@ def loop():
         count.set(cnt)
         print("count: ", cnt)
         raise_frame(countScreen)
-        root.after(2000, next)
-        root.update()
+        root.after(15000, next)
+        #root.after_idle(1000, next)
     root.after(500, loop)
 
 #create the window
