@@ -43,7 +43,7 @@ def number_e():
     count.set(cnt)
     print("count: ", cnt)
     raise_frame(countScreen)
-
+    root.after(5000, next)
 def next():
     global number
     global visible
