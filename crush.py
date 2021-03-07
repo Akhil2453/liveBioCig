@@ -177,9 +177,9 @@ def loop():
         cnt = cnt + 1
         count.set(cnt)
         print("count: ", cnt)
-        if cnt < 1:
+        if cnt <= 1:
             raise_frame(PageOne)
-        else:
+        elif cnt > 10:
             raise_frame(countScreen)
         time.sleep(3)
         #raise_frame(countScreen)
