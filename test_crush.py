@@ -36,6 +36,7 @@ def number_e():
     global cnt
     num = number.get()
     number.set(num)
+    print(num)
     cnt = cnt + 1
     count.set(cnt)
     print("count: ", cnt)
@@ -51,7 +52,8 @@ def next():
     raise_frame(PageTwo)
     root.update()
     pushCnt = str(cnt)
-    print(num)
+    print("Number in next: ")
+    print(number)
     print(pushCnt)
     para = {'action': 'saveUserData', 'MOB': num, 'MCID': '002000501', 'BTNO': pushCnt}
     r = requests.post("http://clickcash.in/apisave/apiDataSavever2.php", data=para)
