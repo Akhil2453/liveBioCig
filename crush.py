@@ -168,9 +168,9 @@ def loop():
         msge="Place the\nCigarette"
         msg.set(msge)
     else:
-        print("red value: ", red)
-        print("blue value: ", blue)
-        print("green value: ", green)
+        # print("red value: ", red)
+        # print("blue value: ", blue)
+        # print("green value: ", green)
         print("Cigarette Bud Detected all")
         msge="Cigarette bud\nDetectedd"
         msg.set(msge)
@@ -179,7 +179,7 @@ def loop():
         count.set(cnt)
         print("count: ", cnt)
         time.sleep(3)
-        raise_frame(countScreen)
+        #raise_frame(countScreen)
         root.after(25000, next)
     root.after(500, loop)
 
@@ -212,8 +212,8 @@ cS = Label(countScreen, text="Cigarette Count: ", font=myfont)
 cS.place(x=250, y=200)
 cS1 = Label(countScreen, textvariable=count, font=myfont)
 cS1.place(x=500, y=200)
-cSbt = Button(countScreen, text="Next", height=2, width=15, command=lambda:raise_frame(PageOne))
-cSbt.place(x=315, y=275)
+cSbt = Button(countScreen, text="Finish", height=2, width=15, command=lambda:next())
+cSbt.place(x=315, y=325)
 
 Label(PageOne, text="Enter your Mobile Number: ", font=myfont).grid(columnspan=3, row=0, column=0, padx=100, pady=5)
 e = Entry(PageOne, textvariable=number, width=30, font=myfont)
