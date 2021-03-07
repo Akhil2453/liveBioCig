@@ -174,10 +174,13 @@ def loop():
         print("Cigarette Bud Detected all")
         msge="Cigarette bud\nDetectedd"
         msg.set(msge)
-        raise_frame(PageOne)
         cnt = cnt + 1
         count.set(cnt)
         print("count: ", cnt)
+        if cnt < 1:
+            raise_frame(PageOne)
+        else:
+            raise_frame(countScreen)
         time.sleep(3)
         #raise_frame(countScreen)
         root.after(25000, next)
