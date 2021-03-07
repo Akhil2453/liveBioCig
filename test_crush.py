@@ -136,6 +136,9 @@ def loop():
         raise_frame(PageOne)
         #time.sleep(3)
     else:
+        cnt = cnt + 1
+        count.set(cnt)
+        print("count: ", cnt)
         raise_frame(countScreen)
     root.after(500, loop)
 
