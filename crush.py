@@ -139,7 +139,7 @@ def loop():
     global cnt
     GPIO.output(s2,GPIO.LOW)
     GPIO.output(s3,GPIO.LOW)
-    time.sleep(0.3)
+    time.sleep(0.1)
     start = time.time()
     for impulse_count in range(NUM_CYCLES):
         GPIO.wait_for_edge(signal, GPIO.FALLING)
@@ -148,7 +148,7 @@ def loop():
     #print("red value - ",red)
     GPIO.output(s2,GPIO.LOW)
     GPIO.output(s3,GPIO.HIGH)
-    time.sleep(0.3)
+    time.sleep(0.1)
     start = time.time()
     for impulse_count in range(NUM_CYCLES):
         GPIO.wait_for_edge(signal, GPIO.FALLING)
@@ -157,14 +157,14 @@ def loop():
     #print("blue value - ",blue)
     GPIO.output(s2,GPIO.HIGH)
     GPIO.output(s3,GPIO.HIGH)
-    time.sleep(0.3)
+    time.sleep(0.1)
     start = time.time()
     for impulse_count in range(NUM_CYCLES):
         GPIO.wait_for_edge(signal, GPIO.FALLING)
     duration = time.time() - start
     green = NUM_CYCLES / duration
     #print("green value - ",green)
-    time.sleep(0.5)
+    time.sleep(0.1)
     if (red <= 1100):
         print("Place the Cigarette")
         print("red value: ", red)
@@ -178,17 +178,17 @@ def loop():
         msge="Cigarette bud\nDetectedd"
         msg.set(msge)
         cnt = cnt + 1
-        cnt = cnt - 5
+#        cnt = cnt - 5
         count.set(cnt)
         print("count: ", cnt)
         if cnt <= 1:
             raise_frame(PageOne)
-            root.after(8000, trial)
-        elif cnt > 10:
+            root.after(25000, trial)
+        elif cnt >= 30:
             raise_frame(countScreen)
         #time.sleep(3)
         #raise_frame(countScreen)
-        root.after(25000, next)
+            next()
     root.after(500, loop)
 
 #create the window
@@ -251,7 +251,7 @@ root.bind('<Configure>', resize)
 
 setup()
 
-root.after(1000, loop)
+root.after(500, loop)
 raise_frame(welcome)
 toggle_fullscreen()
 root.mainloop()
