@@ -124,6 +124,9 @@ def setup():
 def endprogram():
     GPIO.cleanup()
 
+def trial():
+    raise_frame(countScreen)
+
 def loop():
     temp = 1
     global root
@@ -175,13 +178,15 @@ def loop():
         msge="Cigarette bud\nDetectedd"
         msg.set(msge)
         cnt = cnt + 1
+        cnt = cnt - 5
         count.set(cnt)
         print("count: ", cnt)
         if cnt <= 1:
             raise_frame(PageOne)
+            root.after(8000, trial)
         elif cnt > 10:
             raise_frame(countScreen)
-        time.sleep(3)
+        #time.sleep(3)
         #raise_frame(countScreen)
         root.after(25000, next)
     root.after(500, loop)
