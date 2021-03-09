@@ -171,7 +171,7 @@ def loop():
         msge="Place the\nCigarette"
         msg.set(msge)
     else:
-        # print("red value: ", red)
+        print("red value: ", red)
         # print("blue value: ", blue)
         # print("green value: ", green)
         print("Cigarette Bud Detected all")
