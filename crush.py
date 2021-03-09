@@ -165,7 +165,7 @@ def loop():
     green = NUM_CYCLES / duration
     #print("green value - ",green)
     time.sleep(0.1)
-    if (red <= 1100):
+    if (red >= 1295 and red <=1525):
         print("Place the Cigarette")
         print("red value: ", red)
         msge="Place the\nCigarette"
