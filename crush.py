@@ -184,7 +184,7 @@ def loop():
         if cnt <= 1:
             raise_frame(PageOne)
             root.after(25000, trial)
-        elif cnt >= 30:
+        elif cnt >= 10:
             raise_frame(countScreen)
         #time.sleep(3)
         #raise_frame(countScreen)
